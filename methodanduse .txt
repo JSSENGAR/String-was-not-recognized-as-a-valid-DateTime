@@ -1,0 +1,33 @@
+.net 2017 issue encuntering in conversion can be solved as shown in repository
+
+
+
+:
+
+String was not recognized as a valid DateTime  :--
+
+
+Add Tag  
+
+<globnalization culture="hi-IN" />
+
+to web config 
+
+Add Namespace : 
+
+using System.Globalization; //where ever function is defining  
+
+Function Definition :
+
+ public DateTime ParseDateddmm(string date)
+        {
+            DateTimeFormatInfo dateFormatProvider = new DateTimeFormatInfo();
+            dateFormatProvider.ShortDatePattern = "MM/dd/yyyy";
+            return DateTime.Parse(date, dateFormatProvider);
+        }
+
+Function Call :
+
+
+DOAC_Label.Text=ParseDateddmm(DOAC_TextBox.Text);
+
